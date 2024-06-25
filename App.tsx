@@ -1,11 +1,17 @@
+import "react-native-gesture-handler";
 import React from "react";
 import "./ReactotronConfig";
-import { View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { BottomTab } from "@routes/BottomTab/BottomTab";
 
 // import { Container } from './styles';
 
 const App: React.FC = () => {
-  return <View />;
+  return (
+    <NavigationContainer>
+      <BottomTab />
+    </NavigationContainer>
+  );
 };
 
 export default App;
