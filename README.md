@@ -29,7 +29,7 @@ Premissas
 > Quais bibliotecas e ferramentas irá utilizar.
 >
 > - [ ] Axios
-> - [ ] Styled Components
+> - [x] Styled Components
 > - [ ] FlashList
 > - [ ] Zustand
 > - [ ] Reactron
