@@ -14,7 +14,9 @@
     "axios": "^1.7.2",
     "react": "18.2.0",
     "react-native": "0.74.2",
-    "styled-components": "^6.1.11"
+    "react-native-mmkv": "^2.12.2",
+    "styled-components": "^6.1.11",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

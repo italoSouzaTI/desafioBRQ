@@ -28,13 +28,13 @@ Premissas
 > Você tem liberdade para decidir:
 > Quais bibliotecas e ferramentas irá utilizar.
 >
-> - [ ] Axios
+> - [x] Axios
 > - [x] Styled Components
 > - [ ] FlashList
-> - [ ] Zustand
-> - [ ] Reactron
+> - [x] Zustand
 > - [x] Husky
 > - [x] Reactotron
+> - [x] MMKV
 
 > A melhor arquitetura para seu app.
 
