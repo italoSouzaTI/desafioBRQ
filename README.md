@@ -33,8 +33,8 @@ Premissas
 > - [ ] FlashList
 > - [ ] Zustand
 > - [ ] Reactron
-> - [ ] Husky
-> - [ ] Reactron
+> - [x] Husky
+> - [x] Reactotron
 
 > A melhor arquitetura para seu app.
 
