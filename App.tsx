@@ -1,8 +1,11 @@
 import "react-native-gesture-handler";
+
 import React from "react";
-import "./ReactotronConfig";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { BottomTab } from "@routes/BottomTab/BottomTab";
+
+import "./ReactotronConfig";
 
 // import { Container } from './styles';
 

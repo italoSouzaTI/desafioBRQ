@@ -1,12 +1,11 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DetailsItem } from "@features/index";
-const Stack = createNativeStackNavigator();
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 type TPageStackRoutes = {
   DetailsItem: undefined;
 };
 
-export function StackNavigation<TPageStackRoutes>() {
+const Stack = createNativeStackNavigator<TPageStackRoutes>();
+export function StackNavigation() {
   return (
     <Stack.Navigator>
       <Stack.Group

@@ -1,5 +1,5 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Favorite, List } from "@features/index";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 type TPageBottomRoutes = {
   Favorite: undefined;
   List: undefined;
