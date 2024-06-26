@@ -13,6 +13,7 @@ const theme = {
   },
   BACKGROUND: "#0D0D0D",
   TABBOTTOM: "#161C24",
+  CARD: "#141414",
   TEXT: {
     TEXT_PRIMARY: "#F4F6F8",
     TEXT_SECONDARY: "#919EAB",
@@ -27,11 +28,11 @@ const theme = {
       N_1: "24px",
       N_2: "36px",
     },
-    SUBTITLE1: {
+    SUBTITLE: {
       N_1: "16px",
       N_2: "24px",
     },
-    BODY2: {
+    BODY: {
       N_1: "14px",
       N_2: "22px",
     },

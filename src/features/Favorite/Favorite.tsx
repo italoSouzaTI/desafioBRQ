@@ -1,5 +1,9 @@
-import { Text } from "react-native";
+import { ContainerDefault, Header } from "@shared/index";
 
 export function Favorite() {
-  return <Text>Favorito</Text>;
+  return (
+    <ContainerDefault>
+      <Header title="Favorite" />
+    </ContainerDefault>
+  );
 }

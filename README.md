@@ -30,7 +30,6 @@ Premissas
 >
 > - [x] Axios
 > - [x] Styled Components
-> - [ ] FlashList
 > - [x] Zustand
 > - [x] Husky
 > - [x] Reactotron
