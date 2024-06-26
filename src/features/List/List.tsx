@@ -4,7 +4,8 @@ import { ContainerDefault, Header, Typography } from "@shared/index";
 
 import { CardCharacters } from "./Components/CardCharacters/CardCharacters";
 import { Container, FooterFlatlist } from "./styles";
-import { ListPeoples, useModelViewList } from "./useModelViewList";
+import { ListPeoples } from "./useModelViewList";
+import { useModelViewList } from "./useModelViewList.1";
 
 export function List() {
   const { isLoading, colors, TEXT, list, isNextPage, isRefreshing, fetchNextPage, refresh } = useModelViewList();

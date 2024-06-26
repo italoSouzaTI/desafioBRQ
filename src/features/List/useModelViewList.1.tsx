@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Alert } from "react-native";
 
 import { PeopleService } from "@core/Service/People/PeopleService";
-import { IPeople } from "@core/Service/People/PeopleTypes";
 import { useTheme } from "styled-components";
 
-export type ListPeoples = Pick<IPeople, "name" | "url">;
+import { ListPeoples } from "./useModelViewList";
+
 export function useModelViewList() {
   const { colors, TEXT } = useTheme();
   const [isRefreshing, setIsRefreshing] = useState(true);
@@ -39,11 +39,11 @@ export function useModelViewList() {
       const reposnse = await PeopleService.getPeoples(nextPage);
       setList([...list, ...reposnse.data]);
       if (reposnse.next != null) {
-        setNextPage((state) => state + 1);
+        setNextPage((prev) => prev + 1);
         setIsNextPage(true);
       } else {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        setNextPage((state) => (state = 1));
+        setNextPage((prev) => (prev = 1));
         setIsNextPage(false);
       }
     } catch (error) {
