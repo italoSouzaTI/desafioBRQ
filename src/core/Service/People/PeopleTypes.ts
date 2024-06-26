@@ -2,10 +2,11 @@ export interface IPagination {
   count: number;
   next: string;
   previous: any;
-  results: IPeople[];
+  results: IPerson[];
 }
 
-export interface IPeople {
+export interface IPerson {
+  id: string;
   name: string;
   height: string;
   mass: string;
@@ -26,6 +27,6 @@ export interface IPeople {
 export interface PageAPI<Data> {
   status: number;
   data: Data[];
-  next: string;
-  previous: string;
+  next?: string;
+  previous?: string;
 }

@@ -1,27 +1,21 @@
 import { ActivityIndicator, FlatList, ListRenderItemInfo, RefreshControl } from "react-native";
 
+import { IPerson } from "@core/Service/People/PeopleTypes";
+import { ContainerLoading } from "@shared/ContainerLoading/ContainerLoading";
 import { ContainerDefault, Header, Typography } from "@shared/index";
 
 import { CardCharacters } from "./Components/CardCharacters/CardCharacters";
 import { Container, FooterFlatlist } from "./styles";
-import { ListPeoples } from "./useModelViewList";
-import { useModelViewList } from "./useModelViewList.1";
+import { useModelViewList } from "./useModelViewList";
 
 export function List() {
   const { isLoading, colors, TEXT, list, isNextPage, isRefreshing, fetchNextPage, refresh } = useModelViewList();
   if (isLoading && list.length == 0) {
-    return (
-      <ContainerDefault>
-        <Container>
-          <ActivityIndicator size={"large"} color={colors.YELLOW_MAIN} />
-          <Typography label="Loading list..." colorLabel={TEXT.TEXT_PRIMARY} />
-        </Container>
-      </ContainerDefault>
-    );
+    return <ContainerLoading label="Loading list..." />;
   }
 
-  function renderItem({ item }: ListRenderItemInfo<ListPeoples>) {
-    return <CardCharacters people={item} />;
+  function renderItem({ item }: ListRenderItemInfo<IPerson>) {
+    return <CardCharacters people={item.people} />;
   }
   function ListEmptyComponent() {
     return (

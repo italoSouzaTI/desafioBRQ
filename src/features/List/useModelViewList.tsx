@@ -2,22 +2,24 @@ import { useEffect, useState } from "react";
 import { Alert } from "react-native";
 
 import { PeopleService } from "@core/Service/People/PeopleService";
-import { IPeople } from "@core/Service/People/PeopleTypes";
+import { IPerson } from "@core/Service/People/PeopleTypes";
+import { useIsFocused, useRoute } from "@react-navigation/native";
 import { useTheme } from "styled-components";
 
-export type ListPeoples = Pick<IPeople, "name" | "url">;
 export function useModelViewList() {
   const { colors, TEXT } = useTheme();
+  const { name } = useRoute();
+  const isFocused = useIsFocused();
   const [isRefreshing, setIsRefreshing] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [list, setList] = useState<ListPeoples[]>([]);
+  const [list, setList] = useState<IPerson[]>([]);
   const [nextPage, setNextPage] = useState<number>(1);
   const [isNextPage, setIsNextPage] = useState<boolean>(true);
 
   async function getInitialPeoples() {
     try {
       setIsLoading(true);
-      const response = await PeopleService.getPeoples(1);
+      const response = await PeopleService.getPeople(1);
       if (response.status == 200) {
         if (response.next != null) {
           setNextPage((state) => state + 1);
@@ -36,7 +38,7 @@ export function useModelViewList() {
     }
     try {
       setIsRefreshing(true);
-      const reposnse = await PeopleService.getPeoples(nextPage);
+      const reposnse = await PeopleService.getPeople(nextPage);
       setList([...list, ...reposnse.data]);
       if (reposnse.next != null) {
         setNextPage((state) => state + 1);
@@ -53,7 +55,10 @@ export function useModelViewList() {
     }
   }
   useEffect(() => {
-    getInitialPeoples();
-  }, []);
+    if (isFocused && name === "List") {
+      getInitialPeoples();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFocused]);
   return { isLoading, colors, TEXT, list, isNextPage, isRefreshing, fetchNextPage, refresh: getInitialPeoples };
 }

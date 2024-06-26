@@ -4,8 +4,9 @@ import { StatusBar } from "react-native";
 
 import theme from "@core/Theme/Theme";
 import { NavigationContainer } from "@react-navigation/native";
-import { BottomTab } from "@routes/BottomTab/BottomTab";
+import { StackNavigation } from "@routes/Stack/Stack";
 import { ThemeProvider } from "styled-components/native";
+
 import "./ReactotronConfig";
 
 // import { Container } from './styles';
@@ -15,7 +16,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
       <NavigationContainer>
-        <BottomTab />
+        <StackNavigation />
       </NavigationContainer>
     </ThemeProvider>
   );

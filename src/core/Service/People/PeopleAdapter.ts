@@ -1,18 +1,20 @@
-import { IPeople } from "./PeopleTypes";
+import { useMatchNumber } from "@hooks/useMachNumber";
 
-function toPeoples(peoples: IPeople) {
+import { IPerson } from "./PeopleTypes";
+
+function toPeople(peoples: IPerson) {
   const newData = [];
   if (peoples.length <= 0) {
     return [];
   }
   peoples.map((people) => {
-    const characterId = people.url.match(/\/(\d+)\/$/);
+    const characterId = useMatchNumber(people.url);
+    people.id = characterId[1];
     newData.push({
       id: characterId[1],
-      name: people.name,
-      url: people.url,
+      people,
     });
   });
   return newData;
 }
-export const PeopleAdapter = { toPeoples };
+export const PeopleAdapter = { toPeople };
