@@ -14,7 +14,7 @@ Funcionalidades obrigatórias:
 > - [x] Possibilitar ao usuário tocar em um item da lista realizando as seguintes ações:
 > - [x] exibir os detalhes do personagem selecionado disponíveis (/people/id/);
 > - [x] juntamente com os detalhes do personagem deve ser exibido uma lista com os nomes dos filmes nos quais ele apareceu.
-> - [ ] Possibilitar favoritar os personagens através de um ícone (uma estrela, por exemplo) e exibir na listagem essa opção quando marcada.
+> - [x] Possibilitar favoritar os personagens através de um ícone (uma estrela, por exemplo) e exibir na listagem essa opção quando marcada.
 
 Tecnologias Desejáveis (nice to have)
 
@@ -30,10 +30,10 @@ Premissas
 >
 > - [x] Axios
 > - [x] Styled Components
-> - [x] Zustand
+> - [] Zustand
 > - [x] Husky
 > - [x] Reactotron
-> - [x] MMKV
+> - [x] AsyncStorage
 
 > A melhor arquitetura para seu app.
 

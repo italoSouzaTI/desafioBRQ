@@ -11,8 +11,8 @@ export function useModelViewDetailsItem() {
   const route = useRoute();
   const { TEXT, colors, PADDING_DEFAULT } = useTheme();
   const isFocused = useIsFocused();
-  const [isLoading, setIsLoading] = useState(true);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const DATA = route.params.data as IPerson;
   const [dataPerson, setDataPerson] = useState<IPerson>();
   async function getFilms() {
@@ -34,9 +34,9 @@ export function useModelViewDetailsItem() {
           }
         }
         newData.films = auxListFilms;
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        setDataPerson((state) => (state = newData));
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      setDataPerson((state) => (state = newData));
     } catch (error) {
     } finally {
       setIsLoading(false);
@@ -70,7 +70,7 @@ export function useModelViewDetailsItem() {
   async function checkIsFavorite() {
     try {
       const oldFavorite = await favoriteGetAll();
-      const isCheck = oldFavorite.filter((item) => item.id == DATA.id);
+      const isCheck = oldFavorite.filter((item: IPerson) => item.id == DATA.id);
       if (isCheck.length) {
         setIsFavorite(true);
       }

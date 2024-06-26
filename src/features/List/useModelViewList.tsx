@@ -10,8 +10,8 @@ export function useModelViewList() {
   const { colors, TEXT } = useTheme();
   const { name } = useRoute();
   const isFocused = useIsFocused();
-  const [isRefreshing, setIsRefreshing] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [list, setList] = useState<IPerson[]>([]);
   const [nextPage, setNextPage] = useState<number>(1);
   const [isNextPage, setIsNextPage] = useState<boolean>(true);
