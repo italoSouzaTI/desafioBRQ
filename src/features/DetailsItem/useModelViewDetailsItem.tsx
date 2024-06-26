@@ -47,12 +47,13 @@ export function useModelViewDetailsItem() {
     try {
       setIsFavorite((state) => !state);
       const oldFavorite = await favoriteGetAll();
+
       if (oldFavorite.length) {
         const isExist = oldFavorite.filter((item: IPerson) => item.id == DATA.id);
         if (isExist.length) {
           await removeIsFavorite();
         } else if (oldFavorite.length) {
-          await favoriteCreate([...oldFavorite, ...item]);
+          await favoriteCreate([...oldFavorite, item]);
         } else {
           await favoriteCreate([item]);
         }

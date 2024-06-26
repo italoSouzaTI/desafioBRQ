@@ -40,7 +40,7 @@ export function useModelViewList() {
       setIsRefreshing(true);
       const reposnse = await PeopleService.getPeople(nextPage);
       setList([...list, ...reposnse.data]);
-      if (reposnse.next != null) {
+      if (reposnse.next != null && nextPage <= 9) {
         setNextPage((state) => state + 1);
         setIsNextPage(true);
       } else {
@@ -58,6 +58,9 @@ export function useModelViewList() {
     if (isFocused && name === "List") {
       getInitialPeoples();
     }
+    return () => {
+      setNextPage(1);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFocused]);
   return { isLoading, colors, TEXT, list, isNextPage, isRefreshing, fetchNextPage, refresh: getInitialPeoples };
