@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList, ListRenderItemInfo } from "react-native";
+import { FlatList, ListRenderItemInfo } from "react-native";
 
 import { IPerson } from "@core/Service/People/PeopleTypes";
 import { CardCharacters } from "@features/List/Components/CardCharacters/CardCharacters";
@@ -9,7 +9,7 @@ import { ContainerDefault, Header, Typography } from "@shared/index";
 import { useModelViewFavorite } from "./useModelViewFavorite";
 
 export function Favorite() {
-  const { dataFavorite, isLoading, colors, TEXT } = useModelViewFavorite();
+  const { dataFavorite, isLoading, TEXT } = useModelViewFavorite();
   if (isLoading) {
     return (
       <ContainerLoading

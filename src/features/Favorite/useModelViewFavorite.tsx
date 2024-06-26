@@ -6,7 +6,7 @@ import { useIsFocused } from "@react-navigation/native";
 import { useTheme } from "styled-components";
 
 export function useModelViewFavorite() {
-  const { colors, TEXT } = useTheme();
+  const { TEXT } = useTheme();
   const [dataFavorite, setDataFavorite] = useState<IPerson[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const isFocused = useIsFocused();
@@ -26,7 +26,6 @@ export function useModelViewFavorite() {
   return {
     dataFavorite,
     isLoading,
-    colors,
     TEXT,
   };
 }
