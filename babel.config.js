@@ -15,6 +15,14 @@ module.exports = {
         extensions: [".tsx", ".ts"], // extensões que ele deve enxergar
       },
     ],
+    [
+      "module:react-native-dotenv",
+      {
+        envName: "APP_ENV",
+        moduleName: "@env",
+        path: ".env",
+      },
+    ],
   ],
   presets: ["module:@react-native/babel-preset"],
 };
