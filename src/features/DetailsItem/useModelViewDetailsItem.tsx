@@ -11,8 +11,8 @@ export function useModelViewDetailsItem() {
   const route = useRoute();
   const { TEXT, colors, PADDING_DEFAULT } = useTheme();
   const isFocused = useIsFocused();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false);
   const DATA = route.params.data as IPerson;
   const [dataPerson, setDataPerson] = useState<IPerson>();
   async function getFilms() {
@@ -35,6 +35,7 @@ export function useModelViewDetailsItem() {
         }
         newData.films = auxListFilms;
       }
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       setDataPerson((state) => (state = newData));
     } catch (error) {
@@ -44,14 +45,16 @@ export function useModelViewDetailsItem() {
   }
   async function handleFavorite(item: IPerson) {
     try {
+      setIsFavorite((state) => !state);
       const oldFavorite = await favoriteGetAll();
       if (oldFavorite.length) {
-        if (isFavorite == false) {
-          await favoriteCreate([...oldFavorite, item]);
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          setIsFavorite((state) => (state = true));
-        } else {
+        const isExist = oldFavorite.filter((item: IPerson) => item.id == DATA.id);
+        if (isExist.length) {
           await removeIsFavorite();
+        } else if (oldFavorite.length) {
+          await favoriteCreate([...oldFavorite, ...item]);
+        } else {
+          await favoriteCreate([item]);
         }
       } else {
         await favoriteCreate([item]);
@@ -63,14 +66,12 @@ export function useModelViewDetailsItem() {
       const oldFavorite = await favoriteGetAll();
       const isRemove = oldFavorite.filter((item: IPerson) => item.id != DATA.id);
       await favoriteCreate(isRemove.length ? isRemove : []);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      setIsFavorite((state) => (state = false));
     } catch (error) {}
   }
   async function checkIsFavorite() {
     try {
       const oldFavorite = await favoriteGetAll();
-      const isCheck = oldFavorite.filter((item: IPerson) => item.id == DATA.id);
+      const isCheck = oldFavorite.filter((item) => item.id == DATA.id);
       if (isCheck.length) {
         setIsFavorite(true);
       }

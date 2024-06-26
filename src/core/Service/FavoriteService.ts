@@ -7,7 +7,7 @@ export async function favoriteGetAll() {
   try {
     const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
     if (response) {
-      return JSON.parse(response);
+      return await JSON.parse(response);
     }
     return [];
   } catch (error) {

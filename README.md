@@ -6,6 +6,20 @@
 
 ###### Criação de um aplicativo (em React Native) capaz de listar personagens dos filmes Star Wars com informações obtidas a partir da api [Star Wars](https://swapi.dev/).
 
+Como exeutar projeto
+
+```bash
+yarn  start
+
+# OR using android
+yarn android
+# OR using ios
+cd ios
+pod install
+cd..
+yarn ios
+```
+
 As informações lidas deverão ser exibidas considerando as seguintes características abaixo:
 
 Funcionalidades obrigatórias:
@@ -30,9 +44,9 @@ Premissas
 >
 > - [x] Axios
 > - [x] Styled Components
-> - [] Zustand
 > - [x] Husky
 > - [x] Reactotron
+> - [x] ReactNvigation
 > - [x] AsyncStorage
 
 > A melhor arquitetura para seu app.

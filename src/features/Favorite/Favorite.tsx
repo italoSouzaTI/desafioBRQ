@@ -11,12 +11,7 @@ import { useModelViewFavorite } from "./useModelViewFavorite";
 export function Favorite() {
   const { dataFavorite, isLoading, TEXT } = useModelViewFavorite();
   if (isLoading) {
-    return (
-      <ContainerLoading
-        label="
-Loading favorites..."
-      />
-    );
+    return <ContainerLoading label="Loading favorites..." />;
   }
   function renderItem({ item }: ListRenderItemInfo<IPerson>) {
     return <CardCharacters people={item} />;
