@@ -9,8 +9,8 @@
 Como exeutar projeto
 
 ```bash
-yarn  start
-
+#Instalar dependências do projeto/
+yarn
 # OR using android
 yarn android
 # OR using ios
