@@ -1,30 +1,32 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 
-import { favoriteGetAll } from "@core/Service/FavoriteService";
-import { IPerson } from "@core/Service/People/PeopleTypes";
-import { useIsFocused } from "@react-navigation/native";
+import { useFavoriteStore } from "@features/Store/FavoriteStore";
+import { useIsFocused, useRoute } from "@react-navigation/native";
 import { useTheme } from "styled-components";
 
 export function useModelViewFavorite() {
   const { TEXT } = useTheme();
-  const [dataFavorite, setDataFavorite] = useState<IPerson[]>([]);
+  const { favorites, getFavorite } = useFavoriteStore();
+  const { name } = useRoute();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const isFocused = useIsFocused();
-  async function getFavorite() {
+  async function getdata() {
     try {
       setIsLoading(true);
-      const response = await favoriteGetAll();
-      setDataFavorite(response);
+      getFavorite();
     } catch (error) {
     } finally {
       setIsLoading(false);
     }
   }
   useEffect(() => {
-    getFavorite();
+    if (isFocused && name === "Favorite") {
+      getdata();
+    }
   }, [isFocused]);
   return {
-    dataFavorite,
+    dataFavorite: favorites,
     isLoading,
     TEXT,
   };

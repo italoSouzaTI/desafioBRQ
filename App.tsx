@@ -7,7 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StackNavigation } from "@routes/Stack/Stack";
 import { ThemeProvider } from "styled-components/native";
 
-// import "./ReactotronConfig";
+import "./ReactotronConfig";
 
 const App: React.FC = () => {
   return (
