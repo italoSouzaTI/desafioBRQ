@@ -51,13 +51,10 @@ export function useModelViewDetailsItem() {
   async function handleFavorite(item: IPerson) {
     try {
       setIsFavorite((state) => !state);
-      console.tron.log("handleFavorite", item);
       const isExist = favorites.filter((item: IPerson) => item.id == DATA.id);
       if (isExist.length) {
-        console.tron.log("handleFavorite - removido");
         setRemove(DATA.id);
       } else {
-        console.tron.log("handleFavorite - não tenho");
         setFavorite(item);
       }
     } catch (error) {}
