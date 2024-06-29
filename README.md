@@ -32,7 +32,7 @@ Funcionalidades obrigatórias:
 
 Tecnologias Desejáveis (nice to have)
 
-> - [ ] Uso do Zustand
+> - [x] Uso do Zustand
 > - [x] Uso Typescript
 > - [ ] Teste unitários
 > - [x] Hooks
@@ -45,6 +45,7 @@ Premissas
 > - [x] Axios
 > - [x] Styled Components
 > - [x] Husky
+> - [x] Eslint
 > - [x] Reactotron
 > - [x] ReactNvigation
 > - [x] AsyncStorage
@@ -63,5 +64,5 @@ Premissas
 Entregáveis
 Ao finalizar o teste deverão ser entregues os seguintes artefatos:
 
-> Apk do app
+> [Apk do app](https://drive.google.com/file/d/1eNJgovHHRZwcpVkgtU7aU_RI0wKEdP1k/view?usp=sharing)
 > Link do repositório (Github)

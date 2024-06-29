@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { FilmsService } from "@core/Service/Films/FilmsService";
 import { IPerson } from "@core/Service/People/PeopleTypes";
-import { useFavoriteStore } from "@features/Store/FavoriteStore";
+import { useFavoriteStore } from "@core/Store/FavoriteStore";
 import { useMatchNumber } from "@hooks/useMachNumber";
 import { useIsFocused, useRoute } from "@react-navigation/native";
 import { useTheme } from "styled-components";
@@ -14,7 +14,11 @@ export function useModelViewDetailsItem() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
   const DATA = route.params.data as IPerson;
-  const { favorites, setFavorite, getFavorite } = useFavoriteStore();
+  const [favorites, setFavorite, setRemove] = useFavoriteStore((state) => [
+    state.favorites,
+    state.setFavorite,
+    state.setRemove,
+  ]);
   const [dataPerson, setDataPerson] = useState<IPerson>();
   async function getFilms() {
     try {
@@ -47,27 +51,15 @@ export function useModelViewDetailsItem() {
   async function handleFavorite(item: IPerson) {
     try {
       setIsFavorite((state) => !state);
-      getFavorite();
-
-      if (favorites.length) {
-        const isExist = favorites.filter((item: IPerson) => item.id == DATA.id);
-        if (isExist.length) {
-          await removeIsFavorite();
-        } else if (favorites.length) {
-          setFavorite([...favorites, item]);
-        } else {
-          setFavorite([item]);
-        }
+      console.tron.log("handleFavorite", item);
+      const isExist = favorites.filter((item: IPerson) => item.id == DATA.id);
+      if (isExist.length) {
+        console.tron.log("handleFavorite - removido");
+        setRemove(DATA.id);
       } else {
-        setFavorite([item]);
+        console.tron.log("handleFavorite - não tenho");
+        setFavorite(item);
       }
-    } catch (error) {}
-  }
-  async function removeIsFavorite() {
-    try {
-      getFavorite();
-      const isRemove = favorites.filter((item: IPerson) => item.id != DATA.id);
-      setFavorite(isRemove.length ? isRemove : []);
     } catch (error) {}
   }
   async function checkIsFavorite() {
@@ -78,10 +70,6 @@ export function useModelViewDetailsItem() {
       }
     } catch (error) {}
   }
-  useEffect(() => {
-    getFavorite();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   useEffect(() => {
     getFilms();
     checkIsFavorite();

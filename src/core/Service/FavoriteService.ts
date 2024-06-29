@@ -15,8 +15,9 @@ export async function favoriteGetAll() {
   }
 }
 
-export async function favoriteCreate(person: IPerson) {
+export async function favoriteCreate(person: IPerson[]) {
   try {
+    console.tron.log("favoriteCreate", person);
     const jsonValue = JSON.stringify(person);
     await AsyncStorage.setItem(FAVORITE_STORAGE, jsonValue);
   } catch (error) {

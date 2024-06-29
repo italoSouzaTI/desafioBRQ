@@ -3,7 +3,7 @@ import { Alert } from "react-native";
 
 import { PeopleService } from "@core/Service/People/PeopleService";
 import { IPerson } from "@core/Service/People/PeopleTypes";
-import { useFavoriteStore } from "@features/Store/FavoriteStore";
+import { useFavoriteStore } from "@core/Store/FavoriteStore";
 import { useIsFocused, useRoute } from "@react-navigation/native";
 import { useTheme } from "styled-components";
 
@@ -16,7 +16,7 @@ export function useModelViewList() {
   const [list, setList] = useState<IPerson[]>([]);
   const [nextPage, setNextPage] = useState<number>(1);
   const [isNextPage, setIsNextPage] = useState<boolean>(true);
-  const { getFavorite } = useFavoriteStore();
+  const loadFavorite = useFavoriteStore((state) => state.loadFavorite);
 
   async function getInitialPeoples() {
     try {
@@ -59,7 +59,7 @@ export function useModelViewList() {
   useEffect(() => {
     if (isFocused && name === "List") {
       getInitialPeoples();
-      getFavorite();
+      loadFavorite();
     }
     return () => {
       setNextPage(1);
