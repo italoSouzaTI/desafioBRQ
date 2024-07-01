@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "androidAPK": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd ..",
-    "ios": "react-native run-ios",
+    "ios": "react-native run-ios --simulator='iPhone 15 Pro Max'",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
